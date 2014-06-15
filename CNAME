@@ -1,7 +1,1 @@
 OliPro007.weebly.com
-
-$ dig OliPro007.weebly.com +nostats +nocomments +nocmd
-# ;OliPro007.weebly.com.                IN      A
-# OliPro007.weebly.com.         3592    IN      CNAME   OliPro007.github.io.
-# OliPro007.github.io.          43192   IN      CNAME   github.map.fastly.net.
-# github.map.fastly.net.        22      IN      A       199.27.76.133
