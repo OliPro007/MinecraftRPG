@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "MinecraftRPG",
+  "name": "MinecraftRPG",
+  "description": "My first mod for Minecraft.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "OliPro007.weebly.com",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["OliPro007"],
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
