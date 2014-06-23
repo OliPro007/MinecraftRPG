@@ -28,6 +28,18 @@ local.properties
 # PDT-specific
 .buildpath
 
+#################
+## Gradle
+#################
+
+# To prevent us to upload minecraft or the build tools
+*.gradle
+gradlew
+gradlew.bat
+gradle/
+.gradle/
+build/
+
 
 #################
 ## Visual Studio
