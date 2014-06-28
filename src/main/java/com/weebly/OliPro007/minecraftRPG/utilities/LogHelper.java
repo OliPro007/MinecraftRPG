@@ -7,7 +7,7 @@ import cpw.mods.fml.common.FMLLog;
 public class LogHelper {
 	
 	public static void log(Level logLevel, Object object){
-		FMLLog.log(References.MODID, logLevel, String.valueOf(object));
+		FMLLog.log(References.MODID, logLevel, "[MinecraftRPG] " + String.valueOf(object));
 	}
 	
 	public static void all(Object object){

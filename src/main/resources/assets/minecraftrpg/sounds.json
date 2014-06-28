@@ -1,0 +1,4 @@
+{
+    "m4_shoot": {"category": "master", "sounds": [{"name": "m4_shoot", "stream": false}]},
+    "m4_empty": {"category": "master", "sounds": [{"name": "m4_empty", "stream": false}]}
+}
