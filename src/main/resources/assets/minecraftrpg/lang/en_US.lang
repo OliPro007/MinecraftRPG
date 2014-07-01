@@ -1,0 +1,13 @@
+item.steelIngot.name=Steel Ingot
+item.steelBase.name=Steel Mix
+item.steelAxe.name=Steel Axe
+item.steelPickaxe.name=Steel Pickaxe
+item.steelShovel.name=Steel Spade
+item.steelSword.name=Steel Sword
+item.steelHoe.name=Steel Hoe
+item.m4.name=M4 Assault Rifle
+item.arAmmo.name=Assault Rifle Ammunition
+
+tile.steelBlock.name=Steel Block
+
+itemGroup.MinecraftMMORPG=MinecraftMMORPG items

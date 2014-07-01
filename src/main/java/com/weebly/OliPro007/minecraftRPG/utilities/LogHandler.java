@@ -2,9 +2,10 @@ package com.weebly.OliPro007.minecraftRPG.utilities;
 
 import org.apache.logging.log4j.Level;
 
+
 import cpw.mods.fml.common.FMLLog;
 
-public class LogHelper {
+public class LogHandler {
 	
 	public static void log(Level logLevel, Object object){
 		FMLLog.log(References.MODID, logLevel, "[MinecraftRPG] " + String.valueOf(object));

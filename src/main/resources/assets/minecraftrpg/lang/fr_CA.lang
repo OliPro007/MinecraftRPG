@@ -1,0 +1,14 @@
+item.steelIngot.name=Lingot d'acier
+item.steelBase.name=Melange d'acier
+item.steelAxe.name=Hache d'acier
+item.steelPickaxe.name=Pioche d'acier
+item.steelShovel.name=Pelle d'acier
+item.steelSword.name=Epee d'acier
+item.steelHoe.name=Beche d'acier
+item.steelHoe.name=Steel Hoe
+item.m4.name=M4 Assault Rifle
+item.arAmmo.name=Assault Rifle Ammunition
+
+tile.steelBlock.name=Bloc d'acier
+
+itemGroup.MinecraftMMORPG=Objets MinecraftMMORPG

@@ -7,6 +7,4 @@ public class References {
     public static final String CLIENTPROXY = "com.weebly.OliPro007.minecraftRPG.proxy.ClientProxy";
     public static final String SERVERPROXY = "com.weebly.OliPro007.minecraftRPG.proxy.ServerProxy";
     
-    public static final String TEXTUREPATH = MODID.toLowerCase() + ":";
-    
 }
