@@ -17,12 +17,12 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.2-0.0.2"
+version = "1.7.10-0.0.2"
 group= "com.weebly.OliPro007.MinecraftRPG" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "MinecraftRPG"
 
 minecraft {
-    version = "1.7.2-10.12.2.1121"
+    version = "1.7.10-10.13.0.1160"
     if (file('../run').exists()) {
 		assetDir = "../run/assets"
 	} else {

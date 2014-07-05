@@ -29,6 +29,7 @@ import com.weebly.OliPro007.minecraftRPG.utilities.LogHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.References;
 import com.weebly.OliPro007.minecraftRPG.utilities.TexturesHandler;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -39,7 +40,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = References.MODID, version = References.VERSION)
+@Mod(modid = References.MODID, name = References.MODID, version = References.VERSION, guiFactory = References.GUIFACTORY)
 public class MinecraftRPG {
     
     @Mod.Instance(References.MODID)
@@ -71,6 +72,7 @@ public class MinecraftRPG {
     public void preInit(FMLPreInitializationEvent event){
     	LogHandler.info("Starting pre-initialisation, checking for config file and optional mods...");
     	ConfigHandler.init(event.getSuggestedConfigurationFile());
+    	FMLCommonHandler.instance().bus().register(new ConfigHandler());
     	if(Loader.isModLoaded("TConstruct")){
     		LogHandler.info("Tinker's construct is loaded, no need to add aluminum.");
     		ConfigHandler.addAluminum = false;
