@@ -7,6 +7,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -24,6 +25,8 @@ import com.weebly.OliPro007.minecraftRPG.items.SteelPickaxe;
 import com.weebly.OliPro007.minecraftRPG.items.SteelShovel;
 import com.weebly.OliPro007.minecraftRPG.items.SteelSword;
 import com.weebly.OliPro007.minecraftRPG.proxy.IProxy;
+import com.weebly.OliPro007.minecraftRPG.recipes.ModRecipes;
+import com.weebly.OliPro007.minecraftRPG.recipes.RepairRecipe;
 import com.weebly.OliPro007.minecraftRPG.utilities.ConfigHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.LogHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.References;
@@ -113,7 +116,7 @@ public class MinecraftRPG {
 		
 		arAmmo = new Bullet(BulletTypes.AR, modTab);
 		GameRegistry.registerItem(arAmmo, "arAmmo");
-		arMag = new Magazine(30, (Bullet)arAmmo, modTab, TexturesHandler.AR_MAG, "arMag").setContainerItem(arMag);
+		arMag = new Magazine(30, (Bullet)arAmmo, modTab, TexturesHandler.AR_MAG, "arMag");
 		GameRegistry.registerItem(arMag, "arMag");
 		arMFour = new Gun((Magazine)arMag, modTab, TexturesHandler.AR_M_FOUR, "m4");
 		GameRegistry.registerItem(arMFour, "m4");
@@ -127,21 +130,10 @@ public class MinecraftRPG {
 		proxy.registerRenderers();
 		
 		if(ConfigHandler.addSteel){
-			ItemStack steelBaseStack = new ItemStack(steelBase);
-			ItemStack steelIngotStack = new ItemStack(steelIngot);
-			ItemStack coalStack = new ItemStack(Items.coal, 1, OreDictionary.WILDCARD_VALUE);
-			ItemStack oreIronStack = new ItemStack(Blocks.iron_ore);
-			GameRegistry.addShapelessRecipe(steelBaseStack, oreIronStack, new ItemStack(Blocks.coal_ore));
-			GameRegistry.addShapelessRecipe(steelBaseStack, oreIronStack, coalStack, coalStack, coalStack);
-			GameRegistry.addSmelting(steelBase, new ItemStack(steelIngot), 0.7F);
-			GameRegistry.addShapelessRecipe(new ItemStack(steelBlock), steelIngotStack, steelIngotStack, steelIngotStack, 
-																	   steelIngotStack, steelIngotStack, steelIngotStack, 
-																	   steelIngotStack, steelIngotStack, steelIngotStack);
+			ModRecipes.initSteelRecipes();
 		} //End Steel Recipes
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(arMag, 1, arMag.getMaxDamage()), new ItemStack(Items.diamond));
-		//GameRegistry.addShapelessRecipe(, new ItemStack(arAmmo), new ItemStack(arMag, 1, OreDictionary.WILDCARD_VALUE));
-		//STILL HAVEN'T FOUND OUT HOW TO ADD BULLET TO THE MAG
+		ModRecipes.initCommonRecipes();
     }
     
     @EventHandler

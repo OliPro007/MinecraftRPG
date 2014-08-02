@@ -7,6 +7,7 @@ item.steelSword.name=Steel Sword
 item.steelHoe.name=Steel Hoe
 item.m4.name=M4 Assault Rifle
 item.arAmmo.name=Assault Rifle Ammunition
+item.arMag.name=Assault Rifle Magazine
 
 tile.steelBlock.name=Steel Block
 
