@@ -3,12 +3,8 @@ package com.weebly.OliPro007.minecraftRPG;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.weebly.OliPro007.minecraftRPG.blocks.ModBlock;
@@ -26,12 +22,12 @@ import com.weebly.OliPro007.minecraftRPG.items.SteelShovel;
 import com.weebly.OliPro007.minecraftRPG.items.SteelSword;
 import com.weebly.OliPro007.minecraftRPG.proxy.IProxy;
 import com.weebly.OliPro007.minecraftRPG.recipes.ModRecipes;
-import com.weebly.OliPro007.minecraftRPG.recipes.RepairRecipe;
 import com.weebly.OliPro007.minecraftRPG.utilities.ConfigHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.LogHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.References;
 import com.weebly.OliPro007.minecraftRPG.utilities.TexturesHandler;
 
+import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -51,6 +47,8 @@ public class MinecraftRPG {
     
     @SidedProxy(clientSide = References.CLIENTPROXY, serverSide = References.SERVERPROXY)
     public static IProxy proxy;
+    
+    public static boolean isInPreInit;
     
     /*==============*\
     |* Declarations *|
@@ -74,20 +72,31 @@ public class MinecraftRPG {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
     	LogHandler.info("Starting pre-initialisation, checking for config file and optional mods...");
+    	isInPreInit = true;
     	ConfigHandler.init(event.getSuggestedConfigurationFile());
     	FMLCommonHandler.instance().bus().register(new ConfigHandler());
-    	if(Loader.isModLoaded("TConstruct")){
-    		LogHandler.info("Tinker's construct is loaded, no need to add aluminum.");
-    		ConfigHandler.addAluminum = false;
-    	}
-    	if(Loader.isModLoaded("TSteelworks")){
-    		LogHandler.info("Tinker's steelworks is loaded, no need to add steel.");
-    		ConfigHandler.addSteel = false;
+    	if(ConfigHandler.autoDetectMods.getBoolean() == true){
+	    	if(Loader.isModLoaded("TConstruct")){
+	    		LogHandler.info("Tinker's construct is loaded, no need to add aluminum.");
+	    		ConfigHandler.addAluminum.set(false);
+	    	}else{
+	    		LogHandler.info("Tinker's construct is NOT loaded, adding aluminum.");
+	    		ConfigHandler.addAluminum.set(true);
+	    	}
+	    	if(Loader.isModLoaded("TSteelworks")){
+	    		LogHandler.info("Tinker's steelworks is loaded, no need to add steel.");
+	    		ConfigHandler.addSteel.set(false);
+	    	}else{
+	    		LogHandler.info("Tinker's steelworks is NOT loaded, adding steel.");
+	    		ConfigHandler.addSteel.set(true);
+	    	}
+	    	ConfigChangedEvent changed = new ConfigChangedEvent(References.MODID, null, false, false);
+	    	FMLCommonHandler.instance().bus().post(changed);
     	}
     	
     	modTab = new CreativeTabMod(12, References.MODID);
     	
-    	if(ConfigHandler.addSteel){
+    	if(ConfigHandler.addSteel.getBoolean()){
 			steelBase = new Steel(64, modTab, TexturesHandler.STEEL_BASE_TEXTURE, "steelBase");
 			GameRegistry.registerItem(steelBase, "steelBase");
 			OreDictionary.registerOre("steelBase", steelBase);
@@ -121,6 +130,7 @@ public class MinecraftRPG {
 		arMFour = new Gun((Magazine)arMag, modTab, TexturesHandler.AR_M_FOUR, "m4");
 		GameRegistry.registerItem(arMFour, "m4");
     	
+		isInPreInit = false;
     }
     
     @EventHandler
@@ -129,9 +139,12 @@ public class MinecraftRPG {
 		
 		proxy.registerRenderers();
 		
-		if(ConfigHandler.addSteel){
+		if(ConfigHandler.addSteel.getBoolean()){
 			ModRecipes.initSteelRecipes();
-		} //End Steel Recipes
+		}
+		if(ConfigHandler.addAluminum.getBoolean()){
+			ModRecipes.initAluminumRecipes();
+		}
 		
 		ModRecipes.initCommonRecipes();
     }
