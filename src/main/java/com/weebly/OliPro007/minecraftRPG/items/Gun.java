@@ -9,14 +9,13 @@ import net.minecraft.world.World;
 import com.weebly.OliPro007.minecraftRPG.MinecraftRPG;
 import com.weebly.OliPro007.minecraftRPG.entities.EntityBullet;
 
-public class Gun extends Item{
+public class Gun extends ModItem{
 
 	private static Magazine magType;
 	
-	public Gun(Magazine magType, CreativeTabs tab, String texture, String name) {
+	public Gun(Magazine magType, CreativeTabs tab, String name) {
 		this.magType = magType;
 		this.setCreativeTab(tab);
-		this.setTextureName(texture);
 		this.setUnlocalizedName(name);
 		this.setMaxStackSize(1);
 	}

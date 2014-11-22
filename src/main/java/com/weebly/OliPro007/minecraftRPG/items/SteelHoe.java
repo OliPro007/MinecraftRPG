@@ -16,8 +16,8 @@ public class SteelHoe extends Steel{
 	
 	protected ToolMaterial theToolMaterial;
 
-	public SteelHoe(CreativeTabs tab, String texture, String name) {
-		super(1, tab, texture, name);
+	public SteelHoe(CreativeTabs tab, String name) {
+		super(1, tab, name);
 		this.theToolMaterial = Steel.STEEL;
         this.maxStackSize = 1;
         this.setMaxDamage(Steel.STEEL.getMaxUses());

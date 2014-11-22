@@ -22,8 +22,8 @@ public class SteelSword extends Steel{
     private float weaponDamage;
     private final ToolMaterial toolMaterial;
 
-	public SteelSword(CreativeTabs tab, String texture, String name) {
-		super(1, tab, texture, name);
+	public SteelSword(CreativeTabs tab, String name) {
+		super(1, tab, name);
         this.toolMaterial = Steel.STEEL;
         this.setMaxDamage(Steel.STEEL.getMaxUses());
         this.weaponDamage = 4.0F + Steel.STEEL.getDamageVsEntity();

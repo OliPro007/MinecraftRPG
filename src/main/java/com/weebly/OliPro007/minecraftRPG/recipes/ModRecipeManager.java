@@ -10,7 +10,7 @@ import com.weebly.OliPro007.minecraftRPG.utilities.LogHandler;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ModRecipes {
+public class ModRecipeManager {
 	
 	public static void initCommonRecipes(){
 		LogHandler.info("Initializing gun recipes");

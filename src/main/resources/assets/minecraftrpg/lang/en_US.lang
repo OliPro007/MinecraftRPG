@@ -1,14 +1,14 @@
-item.steelIngot.name=Steel Ingot
-item.steelBase.name=Steel Mix
-item.steelAxe.name=Steel Axe
-item.steelPickaxe.name=Steel Pickaxe
-item.steelShovel.name=Steel Spade
-item.steelSword.name=Steel Sword
-item.steelHoe.name=Steel Hoe
-item.m4.name=M4 Assault Rifle
-item.arAmmo.name=Assault Rifle Ammunition
-item.arMag.name=Assault Rifle Magazine
+item.minecraftrpg:steelIngot.name=Steel Ingot
+item.minecraftrpg:steelBase.name=Steel Mix
+item.minecraftrpg:steelAxe.name=Steel Axe
+item.minecraftrpg:steelPickaxe.name=Steel Pickaxe
+item.minecraftrpg:steelShovel.name=Steel Spade
+item.minecraftrpg:steelSword.name=Steel Sword
+item.minecraftrpg:steelHoe.name=Steel Hoe
+item.minecraftrpg:arM4.name=M4 Assault Rifle
+item.minecraftrpg:arAmmo.name=Assault Rifle Ammunition
+item.minecraftrpg:arMag.name=Assault Rifle Magazine
 
-tile.steelBlock.name=Steel Block
+tile.minecraftrpg:steelBlock.name=Steel Block
 
-itemGroup.MinecraftMMORPG=MinecraftMMORPG items
+itemGroup.MinecraftRPG=MinecraftRPG items

@@ -19,8 +19,8 @@ public class SteelPickaxe extends SteelTool{
 			Blocks.golden_rail, Blocks.detector_rail};
 	public static final Set effective = new HashSet(Arrays.asList(effectiveArray));
 	
-	public SteelPickaxe(float damage, CreativeTabs tab, String texture, String name) {
-		super(damage, effective, tab, texture, name);
+	public SteelPickaxe(float damage, CreativeTabs tab, String name) {
+		super(damage, effective, tab, name);
 	}
 	
     /**

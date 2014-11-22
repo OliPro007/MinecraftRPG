@@ -14,6 +14,7 @@ import com.weebly.OliPro007.minecraftRPG.items.Bullet;
 import com.weebly.OliPro007.minecraftRPG.items.BulletTypes;
 import com.weebly.OliPro007.minecraftRPG.items.Gun;
 import com.weebly.OliPro007.minecraftRPG.items.Magazine;
+import com.weebly.OliPro007.minecraftRPG.items.ModItemManager;
 import com.weebly.OliPro007.minecraftRPG.items.Steel;
 import com.weebly.OliPro007.minecraftRPG.items.SteelAxe;
 import com.weebly.OliPro007.minecraftRPG.items.SteelHoe;
@@ -21,7 +22,7 @@ import com.weebly.OliPro007.minecraftRPG.items.SteelPickaxe;
 import com.weebly.OliPro007.minecraftRPG.items.SteelShovel;
 import com.weebly.OliPro007.minecraftRPG.items.SteelSword;
 import com.weebly.OliPro007.minecraftRPG.proxy.IProxy;
-import com.weebly.OliPro007.minecraftRPG.recipes.ModRecipes;
+import com.weebly.OliPro007.minecraftRPG.recipes.ModRecipeManager;
 import com.weebly.OliPro007.minecraftRPG.utilities.ConfigHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.LogHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.References;
@@ -97,38 +98,20 @@ public class MinecraftRPG {
     	modTab = new CreativeTabMod(12, References.MODID);
     	
     	if(ConfigHandler.addSteel.getBoolean()){
-			steelBase = new Steel(64, modTab, TexturesHandler.STEEL_BASE_TEXTURE, "steelBase");
-			GameRegistry.registerItem(steelBase, "steelBase");
-			OreDictionary.registerOre("steelBase", steelBase);
-			steelIngot = new Steel(64, modTab, TexturesHandler.STEEL_INGOT_TEXTURE, "steelIngot");
-			GameRegistry.registerItem(steelIngot, "steelIngot");
-			OreDictionary.registerOre("steelIngot", steelIngot);
-			
-			steelAxe = new SteelAxe(3.0F, modTab, TexturesHandler.STEEL_AXE, "steelAxe");
-			GameRegistry.registerItem(steelAxe, "steelAxe");
-			steelPickaxe = new SteelPickaxe(2.0F, modTab, TexturesHandler.STEEL_PICKAXE, "steelPickaxe");
-			GameRegistry.registerItem(steelPickaxe, "steelPickaxe");
-			steelShovel = new SteelShovel(1.0F, modTab, TexturesHandler.STEEL_SHOVEL, "steelShovel");
-			GameRegistry.registerItem(steelShovel, "steelSpade");
-			steelSword = new SteelSword(modTab, TexturesHandler.STEEL_SWORD, "steelSword");
-			GameRegistry.registerItem(steelSword, "steelSword");
-			steelHoe = new SteelHoe(modTab, TexturesHandler.STEEL_HOE, "steelHoe");
-			GameRegistry.registerItem(steelHoe, "steelHoe");
-			
-			steelBlock = new ModBlock(Material.iron, 5.0F, 10.0F, 100, 0.0F, Block.soundTypeMetal, modTab, TexturesHandler.STEEL_BLOCK, "steelBlock");
-			steelBlock.setHarvestLevel("pickaxe", 2);
-			GameRegistry.registerBlock(steelBlock, "steelBlock");
-			OreDictionary.registerOre("steelBlock", steelBlock);			
+			ModItemManager.initSteelItems();			
     	}
+    	if(ConfigHandler.addAluminum.getBoolean()){
+			ModItemManager.initAluminumItems();
+		}
     	
     	EntityRegistry.registerModEntity(EntityBullet.class, "ARBullet", 1, instance, 120, 10, true);
 		
 		arAmmo = new Bullet(BulletTypes.AR, modTab);
 		GameRegistry.registerItem(arAmmo, "arAmmo");
-		arMag = new Magazine(30, (Bullet)arAmmo, modTab, TexturesHandler.AR_MAG, "arMag");
+		arMag = new Magazine(30, (Bullet)arAmmo, modTab, "arMag");
 		GameRegistry.registerItem(arMag, "arMag");
-		arMFour = new Gun((Magazine)arMag, modTab, TexturesHandler.AR_M_FOUR, "m4");
-		GameRegistry.registerItem(arMFour, "m4");
+		arMFour = new Gun((Magazine)arMag, modTab, "arM4");
+		GameRegistry.registerItem(arMFour, "arM4");
     	
 		isInPreInit = false;
     }
@@ -140,13 +123,13 @@ public class MinecraftRPG {
 		proxy.registerRenderers();
 		
 		if(ConfigHandler.addSteel.getBoolean()){
-			ModRecipes.initSteelRecipes();
+			ModRecipeManager.initSteelRecipes();
 		}
 		if(ConfigHandler.addAluminum.getBoolean()){
-			ModRecipes.initAluminumRecipes();
+			ModRecipeManager.initAluminumRecipes();
 		}
 		
-		ModRecipes.initCommonRecipes();
+		ModRecipeManager.initCommonRecipes();
     }
     
     @EventHandler

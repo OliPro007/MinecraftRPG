@@ -15,8 +15,8 @@ public class SteelShovel extends SteelTool{
 														 Blocks.soul_sand, Blocks.mycelium};
 	public static final Set effective = new HashSet(Arrays.asList(effectiveArray));
 	
-	public SteelShovel(float damage, CreativeTabs tab, String texture, String name) {
-		super(damage, effective, tab, texture, name);
+	public SteelShovel(float damage, CreativeTabs tab, String name) {
+		super(damage, effective, tab, name);
 	}
 
     /**
