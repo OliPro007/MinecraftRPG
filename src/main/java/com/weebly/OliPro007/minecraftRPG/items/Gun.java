@@ -2,11 +2,9 @@ package com.weebly.OliPro007.minecraftRPG.items;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import com.weebly.OliPro007.minecraftRPG.MinecraftRPG;
 import com.weebly.OliPro007.minecraftRPG.entities.EntityBullet;
 
 public class Gun extends ModItem{

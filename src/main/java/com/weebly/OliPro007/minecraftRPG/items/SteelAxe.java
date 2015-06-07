@@ -1,6 +1,5 @@
 package com.weebly.OliPro007.minecraftRPG.items;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,8 +12,8 @@ import net.minecraft.item.ItemStack;
 
 public class SteelAxe extends SteelTool{
 	
-	public static final Block[] effectiveArray = new Block[] {Blocks.planks, Blocks.bookshelf, Blocks.log, Blocks.log2, Blocks.chest, Blocks.double_wooden_slab, Blocks.wooden_slab, Blocks.pumpkin, Blocks.lit_pumpkin};
-	public static final Set effective = new HashSet(Arrays.asList(effectiveArray));
+	private static final Block[] effectiveArray = new Block[] {Blocks.planks, Blocks.bookshelf, Blocks.log, Blocks.log2, Blocks.chest, Blocks.double_wooden_slab, Blocks.wooden_slab, Blocks.pumpkin, Blocks.lit_pumpkin};
+	private static final Set effective = new HashSet(Arrays.asList(effectiveArray));
 	
 	public SteelAxe(float damage, CreativeTabs tab, String name) {
 		super(damage, effective, tab, name);

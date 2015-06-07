@@ -1,32 +1,26 @@
 package com.weebly.OliPro007.minecraftRPG;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.common.MinecraftForge;
 
-import com.weebly.OliPro007.minecraftRPG.blocks.ModBlock;
 import com.weebly.OliPro007.minecraftRPG.creativeTabs.CreativeTabMod;
 import com.weebly.OliPro007.minecraftRPG.entities.EntityBullet;
+import com.weebly.OliPro007.minecraftRPG.events.ConnectionHandler;
+import com.weebly.OliPro007.minecraftRPG.events.SkillEventHandler;
 import com.weebly.OliPro007.minecraftRPG.items.Bullet;
 import com.weebly.OliPro007.minecraftRPG.items.BulletTypes;
 import com.weebly.OliPro007.minecraftRPG.items.Gun;
 import com.weebly.OliPro007.minecraftRPG.items.Magazine;
 import com.weebly.OliPro007.minecraftRPG.items.ModItemManager;
-import com.weebly.OliPro007.minecraftRPG.items.Steel;
-import com.weebly.OliPro007.minecraftRPG.items.SteelAxe;
-import com.weebly.OliPro007.minecraftRPG.items.SteelHoe;
-import com.weebly.OliPro007.minecraftRPG.items.SteelPickaxe;
-import com.weebly.OliPro007.minecraftRPG.items.SteelShovel;
-import com.weebly.OliPro007.minecraftRPG.items.SteelSword;
+import com.weebly.OliPro007.minecraftRPG.network.PacketHandler;
 import com.weebly.OliPro007.minecraftRPG.proxy.IProxy;
 import com.weebly.OliPro007.minecraftRPG.recipes.ModRecipeManager;
+import com.weebly.OliPro007.minecraftRPG.skills.SkillRegistry;
 import com.weebly.OliPro007.minecraftRPG.utilities.ConfigHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.LogHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.References;
-import com.weebly.OliPro007.minecraftRPG.utilities.TexturesHandler;
 
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -130,6 +124,11 @@ public class MinecraftRPG {
 		}
 		
 		ModRecipeManager.initCommonRecipes();
+		
+		PacketHandler.init();
+    	FMLCommonHandler.instance().bus().register(new ConnectionHandler());
+    	MinecraftForge.EVENT_BUS.register(new SkillEventHandler());
+		SkillRegistry.init();
     }
     
     @EventHandler

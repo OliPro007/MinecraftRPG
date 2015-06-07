@@ -7,17 +7,19 @@ import java.util.Set;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class SteelPickaxe extends SteelTool{
 
-	public static final Block[] effectiveArray = new Block[] {Blocks.cobblestone, Blocks.double_stone_slab, Blocks.stone_slab, 
+	private static final Block[] effectiveArray = new Block[] {Blocks.cobblestone, Blocks.double_stone_slab, Blocks.stone_slab, 
 			Blocks.stone, Blocks.sandstone, Blocks.mossy_cobblestone, Blocks.iron_ore, Blocks.iron_block, Blocks.coal_ore, 
 			Blocks.gold_block, Blocks.gold_ore, Blocks.diamond_ore, Blocks.diamond_block, Blocks.ice, Blocks.netherrack, 
 			Blocks.lapis_ore, Blocks.lapis_block, Blocks.redstone_ore, Blocks.redstone_block, Blocks.rail, Blocks.activator_rail, 
 			Blocks.golden_rail, Blocks.detector_rail};
-	public static final Set effective = new HashSet(Arrays.asList(effectiveArray));
+	private static final Set effective = new HashSet(Arrays.asList(effectiveArray));
 	
 	public SteelPickaxe(float damage, CreativeTabs tab, String name) {
 		super(damage, effective, tab, name);
@@ -40,4 +42,10 @@ public class SteelPickaxe extends SteelTool{
     {
         return p_150893_2_.getMaterial() != Material.wood && p_150893_2_.getMaterial() != Material.plants && p_150893_2_.getMaterial() != Material.vine ? super.func_150893_a(p_150893_1_, p_150893_2_) : this.efficiencyOnProperMaterial;
     }
+
+	@Override
+	public boolean onBlockDestroyed(ItemStack p_150894_1_, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_, EntityLivingBase p_150894_7_) {
+		return super.onBlockDestroyed(p_150894_1_, p_150894_2_, p_150894_3_, p_150894_4_, p_150894_5_, p_150894_6_, p_150894_7_);
+	}
+    
 }

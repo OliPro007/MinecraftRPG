@@ -1,28 +1,36 @@
 package com.weebly.OliPro007.minecraftRPG.skills;
 
+import java.io.Serializable;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityClientPlayerMP;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.client.multiplayer.PlayerControllerMP;
+import net.minecraft.server.management.PlayerManager;
+import net.minecraft.util.ChatComponentStyle;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.ChatStyle;
+import net.minecraft.util.EnumChatFormatting;
 
+import com.weebly.OliPro007.minecraftRPG.utilities.LogHandler;
 
-public class Skill {
-	
+public abstract class Skill implements Serializable {
+		
 	private static int[] expNeeded = new int[100];
 	
-	private SkillTypes skill;
+	private String type;
 	private int level;
 	private int exp;
 	private int totalEXP;
 	
-	public Skill(SkillTypes skill){
-		this.skill = skill;
-		this.level = 0;
+	public Skill(String type){
+		this.type = type.toUpperCase();
+		this.level = 1;
 		this.exp = 0;
 		this.totalEXP = 0;
 	}
 	
-	public Skill(SkillTypes skill, int level, int exp){
-		this.skill = skill;
+	public Skill(String type, int level, int exp){
+		this.type = type.toUpperCase();
 		this.level = level;
 		this.exp = exp;
 		this.totalEXP = exp;
@@ -34,7 +42,7 @@ public class Skill {
 	public void addEXP(int amount){
 		if(this.level < 100){
 			this.exp += amount;
-			this.totalEXP = this.exp;
+			this.totalEXP += amount;
 			while(this.exp >= getNeededEXP(this.level)){
 				this.levelUp();
 			}
@@ -42,13 +50,21 @@ public class Skill {
 	}
 	
 	public void levelUp(){
-		this.exp = this.exp - getNeededEXP(this.level);
+		this.exp -= getNeededEXP(this.level);
 		this.level++;
+		
+		LogHandler.debug("Level up " + this.type + " to level " + this.level + "!");
+		ChatComponentStyle text = new ChatComponentText("Level up " + this.type + " to level " + this.level + "!");
+		ChatStyle style = new ChatStyle();
+		style.setItalic(true);
+		style.setColor(EnumChatFormatting.GOLD);
+		text.setChatStyle(style);
+		Minecraft.getMinecraft().thePlayer.addChatMessage(text);
 	}
 	
 	public static void calculateEXP(){
-		for(int i = 0; i < 100; i++){
-			expNeeded[i] = i * i * 50;
+		for(int level = 1; level <= 100; level++){
+			expNeeded[level - 1] = level * level * 50;
 		}
 	}
 	
@@ -72,6 +88,14 @@ public class Skill {
 		}
 	}
 	
-	public void levelEffects(int level){}
+	public String getType(){
+		return this.type;
+	}
+	
+	public int getExp(){
+		return this.totalEXP;
+	}
+	
+	public abstract void levelEffects(int level);
 	
 }

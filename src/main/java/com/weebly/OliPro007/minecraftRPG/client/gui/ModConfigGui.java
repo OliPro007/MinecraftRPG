@@ -1,13 +1,13 @@
 package com.weebly.OliPro007.minecraftRPG.client.gui;
 
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraftforge.common.config.ConfigElement;
+import net.minecraftforge.common.config.Configuration;
+
 import com.weebly.OliPro007.minecraftRPG.utilities.ConfigHandler;
 import com.weebly.OliPro007.minecraftRPG.utilities.References;
 
 import cpw.mods.fml.client.config.GuiConfig;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraftforge.common.config.ConfigElement;
-import net.minecraftforge.common.config.Configuration;
 
 public class ModConfigGui extends GuiConfig{
 

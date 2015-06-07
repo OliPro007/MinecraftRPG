@@ -10,10 +10,10 @@ import net.minecraft.init.Blocks;
 
 public class SteelShovel extends SteelTool{
 
-	public static final Block[] effectiveArray = new Block[] {Blocks.grass, Blocks.dirt, Blocks.sand, Blocks.gravel, 
+	private static final Block[] effectiveArray = new Block[] {Blocks.grass, Blocks.dirt, Blocks.sand, Blocks.gravel, 
 														 Blocks.snow, Blocks.snow_layer, Blocks.clay, Blocks.farmland, 
 														 Blocks.soul_sand, Blocks.mycelium};
-	public static final Set effective = new HashSet(Arrays.asList(effectiveArray));
+	private static final Set effective = new HashSet(Arrays.asList(effectiveArray));
 	
 	public SteelShovel(float damage, CreativeTabs tab, String name) {
 		super(damage, effective, tab, name);

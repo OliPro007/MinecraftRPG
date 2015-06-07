@@ -1,6 +1,5 @@
 package com.weebly.OliPro007.minecraftRPG.items;
 
-import com.weebly.OliPro007.minecraftRPG.utilities.TexturesHandler;
 
 public enum BulletTypes {
 	

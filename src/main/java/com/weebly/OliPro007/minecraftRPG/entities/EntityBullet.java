@@ -1,6 +1,5 @@
 package com.weebly.OliPro007.minecraftRPG.entities;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;

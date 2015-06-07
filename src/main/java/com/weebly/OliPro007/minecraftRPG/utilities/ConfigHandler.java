@@ -2,11 +2,12 @@ package com.weebly.OliPro007.minecraftRPG.utilities;
 
 import java.io.File;
 
-import com.weebly.OliPro007.minecraftRPG.MinecraftRPG;
-
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+
+import com.weebly.OliPro007.minecraftRPG.MinecraftRPG;
+
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 

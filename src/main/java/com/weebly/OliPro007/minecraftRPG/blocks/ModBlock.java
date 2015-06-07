@@ -1,14 +1,14 @@
 package com.weebly.OliPro007.minecraftRPG.blocks;
 
-import com.weebly.OliPro007.minecraftRPG.utilities.References;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.IIcon;
+
+import com.weebly.OliPro007.minecraftRPG.utilities.References;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModBlock extends Block{
 	
