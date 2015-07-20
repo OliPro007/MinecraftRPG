@@ -33,9 +33,6 @@ local.properties
 #################
 
 # To prevent us to upload minecraft or the build tools
-gradlew
-gradlew.bat
-gradle/
 .gradle/
 build/
 
