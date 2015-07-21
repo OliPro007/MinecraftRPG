@@ -22,7 +22,7 @@ group= "com.weebly.OliPro007.MinecraftRPG" // http://maven.apache.org/guides/min
 archivesBaseName = "MinecraftRPG"
 
 minecraft {
-    version = "1.7.10-10.13.0.1160"
+    version = "1.7.10-10.13.4.1448-1.7.10"
     if (file('../run').exists()) {
 		assetDir = "../run/assets"
 	} else {
